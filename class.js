@@ -63,3 +63,9 @@ class Plane {
       }
     }
   }
+class Plane extends Object{
+  pts = 0
+  vida = 1
+  tempo = 0
+  moedas = 0
+}
