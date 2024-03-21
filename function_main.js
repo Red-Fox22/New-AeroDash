@@ -25,15 +25,19 @@ function colid(){
 function objeto(){
     
 }
-function moeda(){
-    
-}
+// function moeda(){
+//     if(plane.moeda(p2)){
+//         plane.md +=1
+//     }else if(plane.moeda(p3)){
+//         plane.md += 1
+//     }
+// }
 
 function point(){
     if(plane.point(p2)){
-        plane.pts +=1
+        plane.pts +=10
     }else if(plane.point(p3)){
-        plane.pts += 1
+        plane.pts += 10
     }
 }
 function atualiza(){
