@@ -21,10 +21,9 @@
   }
 
   section {
-    height: 100vh;
+    height: calc(100vh);
     display: flex;
     justify-content: center;
-    background-image: url('');
   }
 
   footer {
@@ -33,5 +32,37 @@
     left: 0;
     width: 100vw;
     height: 175px;
-    background-image: linear-gradient(to top, #00000050, transparent);
+    background-image: linear-gradient(to top, #000000dd, transparent);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-inline: 100px;
+  }
+
+  img[alt='Menu background'] {
+    width: 100vw;
+    height: 100vh;
+    filter: blur(2.5px);
+    position: absolute;
+    z-index: -10;
+  }
+
+  footer .play-btn {
+    padding-inline: 35px;
+    padding-block: 7.5px;
+    font-weight: 500;
+    font-size: 17px;
+    color: #fff;
+    border: 2.5px solid #fff;
+    background-color: transparent;
+    cursor: pointer;
+    scale: 1.2;
+    transition: all .5s;
+
+    &:hover {
+      background-color: #fff;
+      border-color: #fff;
+      color: #333;
+      scale: 1.3;
+    }
   }
