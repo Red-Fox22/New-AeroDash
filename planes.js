@@ -28,13 +28,13 @@ const planes = [
 
 planes.forEach((plane) => {
   container.innerHTML += `
-    <div>
+    <div class="spawn">
      <img src=${plane.img} alt=${plane.name}>
      <h2>${plane.name}</h2>
      <button>
        ${plane.price}
        <img src="./assets/icon.png" />
-      </button>
+     </button>
     </div>
   `;
 });
