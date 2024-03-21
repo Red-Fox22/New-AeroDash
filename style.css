@@ -7,3 +7,31 @@
   html {
     overflow: hidden;
   }
+
+  img[alt='Logo'] {
+    width: 500px;
+    aspect-ratio: 2/1;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 175px);
+  }
+
+  section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: url('');
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 175px;
+    background-image: linear-gradient(to top, #00000050, transparent);
+  }
