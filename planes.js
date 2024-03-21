@@ -25,3 +25,16 @@ const planes = [
         img: './assets/ap-4.webp',
     },
 ];
+
+planes.forEach((plane) => {
+  container.innerHTML += `
+    <div>
+     <img src=${plane.img} alt=${plane.name}>
+     <h2>${plane.name}</h2>
+     <button>
+       ${plane.price}
+       <img src="./assets/icon.png" />
+      </button>
+    </div>
+  `;
+});
