@@ -16,13 +16,21 @@ planeImage.src = "./assets/plane.webp";
 const speed = 12.5;
 
 const background = new Background(speed);
+const enemies = new Enemies(speed);
 const planeObj = new Plane(speed);
+const collisions = new Collisions(planeObj.plane, enemies.enemies);
 
 const gameLoop = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   background.draw();
   planeObj.updatePosition();
   planeObj.draw();
+  enemies.update();
+
+  if (collisions.update()) {
+    return;
+  }
+
   requestAnimationFrame(gameLoop);
 };
 

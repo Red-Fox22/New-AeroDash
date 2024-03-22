@@ -6,7 +6,7 @@ class Plane {
       height: 50,
       x: 150,
       y: centerY_canvas - 50 / 2,
-      targetY: centerY_canvas - 150 / 2,
+      targetY: centerY_canvas - 50 / 2,
       angle: 0,
       maxAngle: 5,
       angleSpeed: 1,

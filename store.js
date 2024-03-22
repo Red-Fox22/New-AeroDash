@@ -44,7 +44,7 @@ products_btn.forEach((btn, i) => {
         }
       });
 
-      if (btn.innerHTML === 'Select') {   
+      if (btn.innerHTML === 'Select') {
         products_btn.forEach((btn) => {
           if (btn.innerHTML === '✓') {
             btn.innerHTML = 'Select';
