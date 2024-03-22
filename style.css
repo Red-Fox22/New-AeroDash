@@ -112,7 +112,7 @@ footer .play-btn {
   cursor: default;
 
   &:hover {
-    && img[alt] {
+    && img.hover {
       top: -80px;
       transform: perspective(1000px) rotateY(-20deg) rotate(-3deg);
     }
