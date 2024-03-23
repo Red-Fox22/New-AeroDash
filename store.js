@@ -7,8 +7,8 @@ localStorage.setItem(0, true);
 
 const updateMoney = () => {
   document.querySelector("header").innerHTML = `
-    ${storeMoney.toString().padStart(5, "0")}
-    <img src="./assets/icon.png" />
+    <span>${storeMoney.toString().padStart(5, "0")}</span>
+    <img src="./assets/screen.webp" />
   `;
 }
 

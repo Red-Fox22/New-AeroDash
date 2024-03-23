@@ -10,6 +10,9 @@ const centerY_canvas = canvas.height / 2;
 const backgroundImage = new Image();
 backgroundImage.src = "./assets/background.webp";
 
+const explosion = new Image();
+explosion.src = "./assets/explosion.png";
+
 const planeImage = new Image();
 planeImage.src = localStorage.getItem("plane") || "./assets/ap-1.webp";
 
@@ -23,6 +26,15 @@ const gain = 500;
 let points = 0;
 let money = Number(localStorage.getItem("money") || 0);
 
+const updatePoints = () => {
+  document.querySelector("header").innerHTML = `
+    <span>${points.toString().padStart(5, '0')}</span>
+    <img src="./assets/screen.webp" />
+  `;
+}
+
+updatePoints();
+
 const background = new Background(speed);
 const enemies = new Enemies(speed);
 const planeObj = new Plane(speed);
@@ -30,12 +42,18 @@ const collisions = new Collisions(planeObj.plane, enemies.enemies);
 
 const updateMoney = () => {
   enemies.returnEnemies().forEach((enemy) => {
-    if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed * 2) {
+    if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed) {
       points += gain;
       money += gain;
       localStorage.setItem("money", money);
+      updatePoints();
     }
   });
+}
+
+const lost = () => {
+  const plane = planeObj.returnPlane();
+  ctx.drawImage(explosion, plane.x + plane.width / 2, plane.y - plane.height / 2, 100, 100);
 }
 
 const gameLoop = () => {
@@ -47,7 +65,7 @@ const gameLoop = () => {
   updateMoney();
 
   if (collisions.update()) {
-    return;
+    return lost();
   }
 
   requestAnimationFrame(gameLoop);

@@ -1,7 +1,7 @@
 class Plane {
   constructor(speed) {
     this.speed = speed;
-    this.height = planeLevel == 4 ? 60 : 50;
+    this.height = planeLevel == 4 ? 55 : 50;
     this.plane = {
       width: 175,
       height: this.height,
@@ -9,9 +9,13 @@ class Plane {
       y: centerY_canvas - this.height / 2,
       targetY: centerY_canvas - this.height / 2,
       angle: 0,
-      maxAngle: 5,
-      angleSpeed: 1,
+      maxAngle: 3,
+      angleSpeed: .5,
     };
+  }
+
+  returnPlane() {
+    return this.plane;
   }
 
   draw() {
