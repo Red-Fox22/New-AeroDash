@@ -3,6 +3,8 @@ const products_btn = document.querySelectorAll(".container div button");
 const products_img = document.querySelectorAll(".container div img.hover");
 const storeMoney = localStorage.getItem("money") || 0;
 
+localStorage.setItem(0, true);
+
 const updateMoney = () => {
   document.querySelector("header").innerHTML = `
     ${storeMoney.toString().padStart(5, "0")}
@@ -63,7 +65,7 @@ products_btn.forEach((btn, i) => {
       }
     }
 
-    if (planes[i].price <= localStorage.getItem("money")) {
+    if (planes[i].price <= localStorage.getItem("money") && !localStorage.getItem(i)) {
       localStorage.setItem(i, true);
       localStorage.setItem("money", Number(localStorage.getItem("money") - planes[i].price));
     }

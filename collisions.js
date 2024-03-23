@@ -1,9 +1,8 @@
 class Collisions {
-  constructor(player, enemies, canvas) {
+  constructor(player, enemies) {
     this.player = player;
     this.enemies = enemies;
-    this.canvas = canvas;
-    this.isGameOver = false;
+    this.gameOver = false;
   }
 
   updateEnemies(enemies) {
@@ -12,14 +11,14 @@ class Collisions {
 
   checkCollisions() {
     for (let enemy of this.enemies) {
-      if (this.isCollided(this.player, enemy)) {
-        this.isGameOver = true;
+      if (this.collided(this.player, enemy)) {
+        this.gameOver = true;
         break;
       }
     }
   }
 
-  isCollided(obj1, obj2) {
+  collided(obj1, obj2) {
     const margin = 25;
     return obj1.x + obj1.width - margin >= obj2.x &&
       obj1.x + margin <= obj2.x + obj2.width &&
@@ -29,7 +28,7 @@ class Collisions {
 
   update() {
     this.checkCollisions();
-    if (this.isGameOver) {
+    if (this.gameOver) {
       return true;
     }
     return false;

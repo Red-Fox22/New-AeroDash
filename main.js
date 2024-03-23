@@ -11,14 +11,32 @@ const backgroundImage = new Image();
 backgroundImage.src = "./assets/background.webp";
 
 const planeImage = new Image();
-planeImage.src = "./assets/plane.webp";
+planeImage.src = localStorage.getItem("plane") || "./assets/ap-1.webp";
 
-const speed = 12.5;
+const planeLevel = planeImage.src.split("-")[1].split(".")[0];
+console.log(planeLevel);
+
+const speed = 10 * (1 + planeLevel / 4);
+console.log(speed);
+
+const gain = 500;
+let points = 0;
+let money = Number(localStorage.getItem("money") || 0);
 
 const background = new Background(speed);
 const enemies = new Enemies(speed);
 const planeObj = new Plane(speed);
 const collisions = new Collisions(planeObj.plane, enemies.enemies);
+
+const updateMoney = () => {
+  enemies.returnEnemies().forEach((enemy) => {
+    if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed * 2) {
+      points += gain;
+      money += gain;
+      localStorage.setItem("money", money);
+    }
+  });
+}
 
 const gameLoop = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -26,6 +44,7 @@ const gameLoop = () => {
   planeObj.updatePosition();
   planeObj.draw();
   enemies.update();
+  updateMoney();
 
   if (collisions.update()) {
     return;

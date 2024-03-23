@@ -88,7 +88,7 @@ footer .play-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
 }
 
 .container div {
@@ -103,7 +103,7 @@ footer .play-btn {
   border-radius: 20px;
   position: relative;
   padding: 20px;
-  padding-inline: 50px;
+  width: 15vw;
   padding-top: 40px;
   margin-bottom: 30px;
   background-image: linear-gradient(60deg, #ffffff50, #ffffff25);
@@ -139,6 +139,12 @@ footer .play-btn {
 
 .container div img[alt="Cessna"] {
   top: -45px;
+}
+
+.container div img[alt='Fighter'] {
+  height: 60px;
+  top: -45px;
+  width: 90%;
 }
 
 .container div img:last-child {
@@ -209,7 +215,17 @@ header {
   footer {
     position: static;
     justify-content: center;
+    padding: 0;
     gap: 50px;
+  }
+
+  footer .container {
+    width: 100%;
+    gap: 30px;
+
+    & div {
+      width: 16vw;
+    }
   }
 
   footer .play-btn {

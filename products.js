@@ -14,15 +14,21 @@ const planes = [
   },
 
   plane3 = {
-    name: 'Cessna Centurion',
-    price: 11000,
+    name: 'Cessna C.',
+    price: 5500,
     img: './assets/ap-3.webp',
   },
 
   plane4 = {
     name: 'Cessna',
-    price: 5500,
+    price: 6000,
     img: './assets/ap-4.webp',
+  },
+
+  plane5 = {
+    name: 'Fighter',
+    price: 11000,
+    img: './assets/ap-5.webp',
   },
 ];
 
