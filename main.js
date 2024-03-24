@@ -10,6 +10,9 @@ const centerY_canvas = canvas.height / 2;
 const backgroundImage = new Image();
 backgroundImage.src = "./assets/background.webp";
 
+const cloudImage = new Image();
+cloudImage.src = './assets/cloud.webp';
+
 const explosion = new Image();
 explosion.src = "./assets/explosion.png";
 
@@ -17,10 +20,7 @@ const planeImage = new Image();
 planeImage.src = localStorage.getItem("plane") || "./assets/ap-1.webp";
 
 const planeLevel = planeImage.src.split("-")[1].split(".")[0];
-console.log(planeLevel);
-
 const speed = 10 * (1 + planeLevel / 4);
-console.log(speed);
 
 const gain = 500;
 let points = 0;
@@ -38,7 +38,7 @@ updatePoints();
 const background = new Background(speed);
 const enemies = new Enemies(speed);
 const planeObj = new Plane(speed);
-const collisions = new Collisions(planeObj.plane, enemies.enemies);
+const collisions = new Collisions(planeObj.plane, enemies.enemies, enemies.clouds);
 
 const updateMoney = () => {
   enemies.returnEnemies().forEach((enemy) => {

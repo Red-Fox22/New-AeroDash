@@ -20,18 +20,9 @@ class Plane {
 
   draw() {
     ctx.save();
-    ctx.translate(
-      this.plane.x + this.plane.width / 2,
-      this.plane.y + this.plane.height / 2
-    );
+    ctx.translate(this.plane.x + this.plane.width / 2, this.plane.y + this.plane.height / 2);
     ctx.rotate((this.plane.angle * Math.PI) / 180);
-    ctx.drawImage(
-      planeImage,
-      -this.plane.width / 2,
-      -this.plane.height / 2,
-      this.plane.width,
-      this.plane.height
-    );
+    ctx.drawImage(planeImage, -this.plane.width / 2, -this.plane.height / 2, this.plane.width, this.plane.height);
     ctx.restore();
   }
 
@@ -49,7 +40,7 @@ class Plane {
 
   updateAngle(speed) {
     if (this.plane.angle < this.plane.maxAngle && this.plane.angle > -this.plane.maxAngle) {
-      this.plane.angle += speed;
+      this.plane.angle += speed * .75;
     }
   }
 
@@ -66,5 +57,51 @@ class Plane {
     if (this.plane.y != mouseY) {
       this.plane.targetY = mouseY;
     }
+  }
+}
+
+class Collisions {
+  constructor(player, enemies, clouds) {
+    this.player = player;
+    this.enemies = enemies;
+    this.clouds = clouds;
+    this.gameOver = false;
+  }
+
+  updateEnemies(enemies, clouds) {
+    this.enemies = enemies;
+    this.clouds = clouds;
+  }
+
+  checkCollisions() {
+    for (let enemy of this.enemies) {
+      if (this.collided(this.player, enemy)) {
+        this.gameOver = true;
+        break;
+      }
+    }
+
+    for (let cloud of this.clouds) {
+      if (this.collided(this.player, cloud)) {
+        this.gameOver = true;
+        break;
+      }
+    }
+  }
+
+  collided(obj1, obj2) {
+    const margin = 20;
+    return obj1.x + obj1.width - margin >= obj2.x &&
+      obj1.x + margin <= obj2.x + obj2.width &&
+      obj1.y + obj1.height - margin >= obj2.y &&
+      obj1.y + margin <= obj2.y + obj2.height;
+  }
+
+  update() {
+    this.checkCollisions();
+    if (this.gameOver) {
+      return true;
+    }
+    return false;
   }
 }
