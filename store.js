@@ -12,8 +12,6 @@ const updateMoney = () => {
   `;
 }
 
-updateMoney();
-
 const checkMoney = () => {
   products.forEach((product, i) => {
     if (planes[i].price > localStorage.getItem("money") && !localStorage.getItem(i)) {
@@ -24,8 +22,6 @@ const checkMoney = () => {
     }
   });
 }
-
-checkMoney();
 
 products.forEach((product, i) => {
   if (localStorage.getItem(i)) {
@@ -79,3 +75,10 @@ products_btn.forEach((btn, i) => {
     btn.innerHTML = '✓';
   }
 });
+
+updateMoney();
+checkMoney();
+
+if (!localStorage.getItem("plane")) {
+  products_btn[0].click();
+}

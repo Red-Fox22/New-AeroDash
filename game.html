@@ -7,6 +7,7 @@
     <title>AeroDash</title>
     <link rel="icon" href="./assets/icon.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
+    <script src="navigation.js" defer></script>
     <script src="scenario.js" defer></script>
     <script src="plane.js" defer></script>
     <script src="main.js" defer></script>
@@ -14,7 +15,11 @@
   <body>
     <header></header>
     <canvas></canvas>
-
+    <div class="lost">
+      <button>↵</button>
+      <h1>You lost</h1>
+      <button>>></button>
+    </div>
     <script>
       window.addEventListener("resize", () => {
         location.reload();

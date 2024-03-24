@@ -82,7 +82,7 @@ footer .play-btn {
 
   &:active {
     transition: all 0.2s;
-    scale: 0.75;
+    scale: 0.9;
     cursor: wait;
   }
 }
@@ -110,7 +110,7 @@ footer .play-btn {
   padding-top: 40px;
   margin-bottom: 30px;
   background-image: linear-gradient(60deg, #ffffff50, #ffffff25);
-  -webkit-box-reflect: below 5px linear-gradient(to bottom, #000000, #00000010);
+  -webkit-box-reflect: below 5px linear-gradient(to bottom, #00000000, #aaaaaa50);
   animation: spawn 0.2s linear;
   cursor: default;
 
@@ -221,6 +221,48 @@ header {
   & span {
     z-index: 2;
   }
+}
+
+.lost {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  & button {
+    &:hover {
+      filter: brightness(.8);
+    }
+  }
+
+  & h1 {
+    cursor: default;
+  }
+}
+
+.lost h1 {
+  font-size: 30px;
+  background-color: #00000075;
+  backdrop-filter: blur(15px);
+  color: #fff;
+  padding: 30px 50px 30px 50px;
+  border-radius: 20px;
+}
+
+.lost button {
+  font-size: 25px;
+  color: #fff;
+  background-color: #00000075;
+  backdrop-filter: blur(15px);
+  border: 0;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1450px) {
