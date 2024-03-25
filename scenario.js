@@ -1,3 +1,4 @@
+//Miguel
 class Background {
   constructor(speed) {
     this.speed = speed;
@@ -55,7 +56,7 @@ class Enemies {
       this.enemies.push(enemy);
     }
   }
-
+//Ester
   spawnCloud() {
     const y = Math.floor(Math.random() * centerY_canvas);
 

@@ -60,6 +60,8 @@ class Plane {
   }
 }
 
+//Guilherme
+
 class Collisions {
   constructor(player, enemies, clouds) {
     this.player = player;

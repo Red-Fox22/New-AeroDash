@@ -1,3 +1,4 @@
+//Ester
 const container = document.querySelector('footer .container');
 
 const planes = [
