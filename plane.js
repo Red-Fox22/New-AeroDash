@@ -74,23 +74,16 @@ class Collisions {
   }
 
   checkCollisions() {
-    for (let enemy of this.enemies) {
-      if (this.collided(this.player, enemy, 20)) {
-        this.gameOver = true;
-        break;
-      }
-    }
-
-    for (let cloud of this.clouds) {
-      if (this.collided(this.player, cloud, 50)) {
+    for (const element of [...this.enemies, ...this.clouds]) {
+      if (this.collided(this.player, element)) {
         this.gameOver = true;
         break;
       }
     }
   }
 
-  collided(obj1, obj2, limit) {
-    const margin = limit;
+  collided(obj1, obj2) {
+    const margin = obj2.margin;
     return obj1.x + obj1.width - margin >= obj2.x &&
       obj1.x + margin <= obj2.x + obj2.width &&
       obj1.y + obj1.height - margin >= obj2.y &&

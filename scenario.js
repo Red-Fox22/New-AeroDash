@@ -34,12 +34,13 @@ class Enemies {
 
   spawnTower() {
     const height = Math.floor(Math.random() * (300 - 200)) + 200;
-    
+
     const enemy = {
       x: canvas.width + 1000,
       y: canvas.height - height,
       width: 100,
       height: height,
+      margin: 20,
     };
 
     const randImgArray = Array.from({ length: 7 }, (_, i) => `predio-${i + 1}`);
@@ -64,16 +65,15 @@ class Enemies {
       width: 200,
       height: 100,
       img: cloudImage,
+      margin: 50,
     }
 
     this.clouds.push(cloud);
   }
 
   moveEnemies() {
-    for (const array of [this.enemies, this.clouds]) {
-      for (const element of array) {
-        element.x -= this.speed;
-      }
+    for (const element of [...this.enemies, ...this.clouds]) {
+      element.x -= this.speed;
     }
 
     this.enemies = this.enemies.filter(enemy => enemy.x > 0 - enemy.width);
@@ -103,10 +103,8 @@ class Enemies {
   }
 
   drawEnemies() {
-    for (const array of [this.enemies, this.clouds]) {
-      for (const element of array) {
-        ctx.drawImage(element.img, element.x, element.y, element.width, element.height);
-      }
+    for (const element of [...this.enemies, ...this.clouds]) {
+      ctx.drawImage(element.img, element.x, element.y, element.width, element.height);
     }
   }
 }

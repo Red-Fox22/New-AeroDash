@@ -110,12 +110,13 @@ footer .play-btn {
   padding-top: 40px;
   margin-bottom: 30px;
   background-image: linear-gradient(60deg, #ffffff50, #ffffff25);
-  -webkit-box-reflect: below 5px linear-gradient(to bottom, #00000000, #aaaaaa50);
+  -webkit-box-reflect: below 5px
+    linear-gradient(to bottom, #00000000, #aaaaaa50);
   animation: spawn 0.2s linear;
   cursor: default;
 
   &:hover {
-    && img.hover {
+    img.hover {
       transform: perspective(1000px) rotateY(-20deg) rotate(-3deg)
         translateY(-40%);
     }
@@ -233,14 +234,12 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  & button {
-    &:hover {
-      filter: brightness(.8);
-    }
-  }
-
   & h1 {
     cursor: default;
+  }
+
+  & * {
+    box-shadow: 2px 2px 2px #00000099;
   }
 }
 
@@ -263,6 +262,79 @@ header {
   aspect-ratio: 1;
   border-radius: 20px;
   cursor: pointer;
+  transition: scale 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+    scale: 1.2;
+  }
+
+  &:active {
+    scale: none;
+    cursor: wait;
+  }
+}
+
+ul {
+  display: flex;
+  background-color: #eeeeee99;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  padding: 7.5px;
+  border-radius: 0 0 10px 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  opacity: 0.5;
+
+  &:hover {
+    padding-inline: 20px;
+    opacity: 1;
+
+    & img {
+      filter: invert(0.2);
+    }
+
+    & li {
+      display: block;
+    }
+  }
+}
+
+ul img {
+  width: 35px;
+  aspect-ratio: 1;
+  filter: invert(0.75);
+}
+
+ul li {
+  list-style: none;
+  display: none;
+}
+
+ul li button {
+  width: 200px;
+  border: 0;
+  border-radius: 10px;
+  color: #555;
+  background-color: #00000010;
+  padding-block: 4px;
+  padding-inline: 7.5px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #00000020;
+    cursor: pointer;
+  }
+
+  &:active {
+    transition: all 0.2s;
+    scale: 0.9;
+    cursor: wait;
+  }
 }
 
 @media screen and (max-width: 1450px) {
