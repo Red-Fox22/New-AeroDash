@@ -247,7 +247,7 @@ header {
 .lost h1 {
   font-size: 30px;
   background-color: #00000075;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   color: #fff;
   padding: 30px 50px 30px 50px;
   border-radius: 20px;

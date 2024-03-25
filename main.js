@@ -40,14 +40,14 @@ const planeObj = new Plane(speed);
 const collisions = new Collisions(planeObj.plane, enemies.enemies, enemies.clouds);
 
 const updateMoney = () => {
-  enemies.returnEnemies().forEach((enemy) => {
+  for (const enemy of enemies.returnEnemies()) {
     if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed) {
       points += gain;
       money += gain;
       localStorage.setItem("money", money);
       updatePoints();
     }
-  });
+  }
 }
 
 const lost = () => {
@@ -74,10 +74,10 @@ const gameLoop = () => {
 window.addEventListener("mousemove", (event) => {
   let mousePos = event.clientY;
 
-  if (mousePos > canvas.height - 100) {
-    mousePos = canvas.height - 100;
-  } else if (mousePos <= 50) {
-    mousePos = 50;
+  if (mousePos > canvas.height - 75) {
+    mousePos = canvas.height - 75;
+  } else if (mousePos <= 25) {
+    mousePos = 25;
   }
   planeObj.move(mousePos);
 });

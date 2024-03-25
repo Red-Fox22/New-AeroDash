@@ -32,7 +32,7 @@ const planes = [
   },
 ];
 
-planes.forEach((plane) => {
+for (const plane of planes) {
   container.innerHTML += `
     <div class="spawn">
      <img src=${plane.img} class="hover" alt="${plane.name}">
@@ -43,4 +43,4 @@ planes.forEach((plane) => {
      </button>
     </div>
   `;
-});
+}

@@ -3,9 +3,9 @@ document.querySelector('.play-btn')?.addEventListener("click", () => {
 });
 
 document.querySelector('.lost button')?.addEventListener("click", () => {
-  location.href = 'index.html';
+  location.reload();
 });
 
 document.querySelector('.lost button ~ button')?.addEventListener("click", () => {
-  location.reload();
+  location.href = 'index.html';
 });

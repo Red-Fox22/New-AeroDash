@@ -1,7 +1,7 @@
 const products = document.querySelectorAll(".container div");
 const products_btn = document.querySelectorAll(".container div button");
 const products_img = document.querySelectorAll(".container div img.hover");
-const storeMoney = localStorage.getItem("money") || 0;
+let storeMoney = localStorage.getItem("money") || 0;
 
 localStorage.setItem(0, true);
 
@@ -13,57 +13,58 @@ const updateMoney = () => {
 }
 
 const checkMoney = () => {
-  products.forEach((product, i) => {
-    if (planes[i].price > localStorage.getItem("money") && !localStorage.getItem(i)) {
+  for (const [index, product] of products.entries()) {
+    if (planes[index].price > localStorage.getItem("money") && !localStorage.getItem(index)) {
       product.style.filter = 'brightness(.7) grayscale(1)';
-      products_btn[i].disabled = true;
-      products_btn[i].style.cursor = 'not-allowed';
-      products_img[i].removeAttribute("class");
+      products_btn[index].disabled = true;
+      products_btn[index].style.cursor = 'not-allowed';
+      products_img[index].removeAttribute("class");
     }
-  });
+  }
 }
 
-products.forEach((product, i) => {
-  if (localStorage.getItem(i)) {
-    products_btn[i].innerHTML = 'Select';
+for (const [index] of products.entries()) {
+  if (localStorage.getItem(index)) {
+    products_btn[index].innerHTML = 'Select';
   }
-});
+}
 
-products_btn.forEach((btn, i) => {
-  const src = `.${products_img[i].src.split("AeroDash")[1]}`;
+for (const [index, btn] of products_btn.entries()) {
+  const src = products_img[index].src;
 
   btn.addEventListener("click", () => {
     const check = () => {
-      products_btn.forEach((btn) => {
+      for (const btn of products_btn) {
         if (btn.innerHTML === '✓') {
-          if (localStorage.getItem(i)) {
+          if (localStorage.getItem(index)) {
             btn.innerHTML = 'Select';
           }
         }
-      });
+      }
 
       if (btn.innerHTML === 'Select') {
-        products_btn.forEach((btn) => {
+        for (const btn of products_btn) {
           if (btn.innerHTML === '✓') {
             btn.innerHTML = 'Select';
           }
-        });
+        }
         btn.innerHTML = '✓';
         localStorage.removeItem("plane");
       }
 
-      if (localStorage.getItem(i) && localStorage.getItem("plane") === src) {
+      if (localStorage.getItem(index) && localStorage.getItem("plane") === src) {
         btn.innerHTML = 'Select';
         localStorage.removeItem("plane");
-      } else if (localStorage.getItem(i)) {
+      } else if (localStorage.getItem(index)) {
         localStorage.setItem("plane", src);
         btn.innerHTML = '✓';
       }
     }
 
-    if (planes[i].price <= localStorage.getItem("money") && !localStorage.getItem(i)) {
-      localStorage.setItem(i, true);
-      localStorage.setItem("money", Number(localStorage.getItem("money") - planes[i].price));
+    if (planes[index].price <= localStorage.getItem("money") && !localStorage.getItem(index)) {
+      localStorage.setItem(index, true);
+      localStorage.setItem("money", Number(localStorage.getItem("money") - planes[index].price));
+      storeMoney = localStorage.getItem("money");
     }
 
     check();
@@ -74,7 +75,7 @@ products_btn.forEach((btn, i) => {
   if (localStorage.getItem("plane") === src) {
     btn.innerHTML = '✓';
   }
-});
+}
 
 updateMoney();
 checkMoney();

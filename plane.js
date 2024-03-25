@@ -1,7 +1,7 @@
 class Plane {
   constructor(speed) {
     this.speed = speed;
-    this.height = planeLevel == 4 ? 55 : 50;
+    this.height = (planeLevel == 4 || planeLevel == 3) ? 55 : 50;
     this.plane = {
       width: 175,
       height: this.height,
@@ -75,14 +75,14 @@ class Collisions {
 
   checkCollisions() {
     for (let enemy of this.enemies) {
-      if (this.collided(this.player, enemy, 15)) {
+      if (this.collided(this.player, enemy, 20)) {
         this.gameOver = true;
         break;
       }
     }
 
     for (let cloud of this.clouds) {
-      if (this.collided(this.player, cloud, 30)) {
+      if (this.collided(this.player, cloud, 50)) {
         this.gameOver = true;
         break;
       }
