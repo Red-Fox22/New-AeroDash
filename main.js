@@ -32,6 +32,7 @@ const updatePoints = () => {
     <img src="./assets/screen.webp" />
   `;
 }
+//Guilherme
 updatePoints();
 
 const background = new Background(speed);
@@ -50,6 +51,7 @@ const updateMoney = () => {
   }
 }
 
+//Sara
 const lost = () => {
   const plane = planeObj.returnPlane();
   ctx.drawImage(explosion, plane.x + plane.width / 2, plane.y - plane.height / 2, 100, 100);
