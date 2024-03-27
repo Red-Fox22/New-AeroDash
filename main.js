@@ -28,10 +28,7 @@ let points = 0;
 let money = Number(localStorage.getItem("money") || 0);
 
 const updatePoints = () => {
-  document.querySelector("header").innerHTML = `
-    <span>${points.toString().padStart(5, '0')}</span>
-    <img src="./assets/screen.webp" />
-  `;
+  
 }
 //Guilherme
 updatePoints();
@@ -42,49 +39,19 @@ const planeObj = new Plane(speed);
 const collisions = new Collisions(planeObj.plane, enemies.enemies, enemies.clouds);
 
 const updateMoney = () => {
-  for (const enemy of enemies.returnEnemies()) {
-    if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed) {
-      points += gain;
-      money += gain;
-      localStorage.setItem("money", money);
-      updatePoints();
+  
     }
-  }
-}
 
 //Sara
 const lost = () => {
-  const plane = planeObj.returnPlane();
-  ctx.drawImage(explosion, plane.x + plane.width / 2, plane.y - plane.height / 2, 100, 100);
-  document.querySelector('.lost').style.display = 'flex';
+  
 }
-
 //Miguel
-
 const gameLoop = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  background.draw();
-  planeObj.updatePosition();
-  planeObj.draw();
-  enemies.update();
-  updateMoney();
-
-  if (collisions.update()) {
-    return lost();
+  
   }
-
-  requestAnimationFrame(gameLoop);
-};
 
 window.addEventListener("mousemove", (event) => {
-  let mousePos = event.clientY;
-
-  if (mousePos > canvas.height - 75) {
-    mousePos = canvas.height - 75;
-  } else if (mousePos <= 25) {
-    mousePos = 25;
-  }
-  planeObj.move(mousePos);
 });
 
 gameLoop();
