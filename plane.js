@@ -57,21 +57,42 @@ class Plane {
 }
 
 //Guilherme
+class Collisions {
+  constructor(player, enemies, clouds) {
+    this.player = player;
+    this.enemies = enemies;
+    this.clouds = clouds;
+    this.gameOver = false;
+  }
 
-class Collisions {}
+  updateEnemies(enemies, clouds) {
+    this.enemies = enemies;
+    this.clouds = clouds;
+  }
 
-updateEnemies(enemies, clouds);
-{
-}
+  checkCollisions() {
+    for (const element of [...this.enemies, ...this.clouds]) {
+      if (this.collided(this.player, element)) {
+        this.gameOver = true;
+        break;
+      }
+    }
+  }
 
-checkCollisions();
-{
-}
+  collided(obj1, obj2) {
+    const margin = obj2.margin;
+    return obj1.x + obj1.width - margin >= obj2.x &&
+      obj1.x + margin <= obj2.x + obj2.width &&
+      obj1.y + obj1.height - margin >= obj2.y &&
+      obj1.y + margin <= obj2.y + obj2.height;
+  }
 
-collided(obj1, obj2);
-{
-}
-
-update();
-{
+  update() {
+    this.checkCollisions();
+    if (this.gameOver) {
+      return true;
+    }
+    return false;
+  }
+>>>>>>> 94e031bb3530ccc9836f22f633b4de20febdffd0
 }
