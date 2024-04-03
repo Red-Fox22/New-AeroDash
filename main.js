@@ -40,9 +40,6 @@ const collisions = new Collisions(
   enemies.clouds
 );
 
-<<<<<<< HEAD
-const updateMoney = () => {};
-=======
 const updateMoney = () => {
   for (const enemy of enemies.returnEnemies()) {
     if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed) {
@@ -53,7 +50,6 @@ const updateMoney = () => {
     }
   }
 }
->>>>>>> 94e031bb3530ccc9836f22f633b4de20febdffd0
 
 //Sara
 const lost = () => {};

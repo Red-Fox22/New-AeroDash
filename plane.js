@@ -94,5 +94,4 @@ class Collisions {
     }
     return false;
   }
->>>>>>> 94e031bb3530ccc9836f22f633b4de20febdffd0
 }
