@@ -44,8 +44,11 @@ const updateMoney = () => {
 
 //Sara
 const lost = () => {
-  
+  const plane = planeObj.returnPlane();
+  ctx.drawImage(explosion, plane.x + plane.width / 2, plane.y - plane.height / 2, 100, 100);
+  document.querySelector('.lost').style.display = 'flex';
 }
+
 //Miguel
 const gameLoop = () => {
   
