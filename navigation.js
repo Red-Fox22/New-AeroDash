@@ -12,11 +12,11 @@ document.querySelector('.lost button ~ button')?.addEventListener("click", () =>
 });
 
 document.querySelector('ul li button')?.addEventListener("click", () => {
-
-  
-  }
-);
+  localStorage.clear();
+  location.reload();
+});
 
 document.querySelector('ul li:last-child button')?.addEventListener("click", () => {
-  
-});
+  localStorage.setItem("money", 100000);
+  location.reload();
+}); 
