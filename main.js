@@ -39,8 +39,15 @@ const planeObj = new Plane(speed);
 const collisions = new Collisions(planeObj.plane, enemies.enemies, enemies.clouds);
 
 const updateMoney = () => {
-  
+  for (const enemy of enemies.returnEnemies()) {
+    if (enemy.x < 0 + 150 && enemy.x > 0 + 150 - speed) {
+      points += gain;
+      money += gain;
+      localStorage.setItem("money", money);
+      updatePoints();
     }
+  }
+}
 
 //Sara
 const lost = () => {
