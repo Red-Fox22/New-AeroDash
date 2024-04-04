@@ -1,4 +1,17 @@
 //Miguel
+const music_sound = new Audio('./assets/music.mp3');
+music_sound.loop = true;
+music_sound.volume = 0.2;
+
+let music = false;
+
+window.addEventListener("mousemove", () => {
+  if (!music) {
+    music_sound.play();
+    music = true;
+  }
+});
+
 document.querySelector('.play-btn')?.addEventListener("click", () => {
   location.href = 'game.html';
 });
@@ -12,11 +25,15 @@ document.querySelector('.lost button ~ button')?.addEventListener("click", () =>
 });
 
 document.querySelector('ul li button')?.addEventListener("click", () => {
-  localStorage.clear();
-  location.reload();
+  if (confirm('Are you sure you want to reset the game?')) {
+    localStorage.clear();
+    location.reload();
+  }
 });
 
 document.querySelector('ul li:last-child button')?.addEventListener("click", () => {
-  localStorage.setItem("money", 100000);
-  location.reload();
-}); 
+  if (prompt('Enter developer password:')?.toLowerCase() === 'mesn') {
+    localStorage.setItem("money", 100000);
+    location.reload();
+  }
+});
