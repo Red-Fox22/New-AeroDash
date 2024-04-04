@@ -63,11 +63,55 @@ class Enemies {
     }
   }
   //Ester
-  spawnCloud() {}
+  spawnCloud() {
+    const y = Math.floor(Math.random() * centerY_canvas);
 
-  moveEnemies() {}
+    const cloud = {
+      x: canvas.width + 1000,
+      y: y,
+      width: 200,
+      height: 100,
+      img: cloudImage,
+      margin: 50,
+    }
 
-  update() {}
+    this.clouds.push(cloud);
+  }
 
-  drawEnemies() {}
+  moveEnemies() {
+    for (const element of [...this.enemies, ...this.clouds]) {
+      element.x -= this.speed;
+    }
+
+    this.enemies = this.enemies.filter(enemy => enemy.x > 0 - enemy.width);
+    this.clouds = this.clouds.filter(cloud => cloud.x > 0 - cloud.width);
+  }
+
+  update() {
+    const currentTime = new Date().getTime();
+
+    if (currentTime - this.lastSpawn > this.spawnRate) {
+      this.spawnTower();
+      this.lastSpawn = currentTime;
+    }
+
+    if (currentTime - this.lastSpawnCloud > this.spawnRateCloud) {
+      this.spawnCloud();
+      this.lastSpawnCloud = currentTime;
+    }
+
+    this.moveEnemies();
+    this.drawEnemies();
+
+    this.spawnRate = Math.floor(Math.random() * (20000 - 500 + 1)) + 500;
+    this.spawnRateCloud = Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
+
+    collisions.updateEnemies(this.enemies, this.clouds);
+  }
+
+  drawEnemies() {
+    for (const element of [...this.enemies, ...this.clouds]) {
+      ctx.drawImage(element.img, element.x, element.y, element.width, element.height);
+    }
+  }
 }

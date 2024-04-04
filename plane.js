@@ -1,6 +1,19 @@
 //Ester
 class Plane {
-  constructor(speed) {}
+  constructor(speed) {
+    this.speed = speed;
+    this.height = (planeLevel == 4 || planeLevel == 3) ? 55 : 50;
+    this.plane = {
+      width: 175,
+      height: this.height,
+      x: 150,
+      y: centerY_canvas - this.height * .5,
+      targetY: centerY_canvas - this.height * .5,
+      angle: 0,
+      maxAngle: 3,
+      angleSpeed: .5,
+    };
+  }
   //Miguel
   draw() {
     ctx.save();

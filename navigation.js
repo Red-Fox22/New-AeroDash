@@ -12,11 +12,15 @@ document.querySelector('.lost button ~ button')?.addEventListener("click", () =>
 });
 
 document.querySelector('ul li button')?.addEventListener("click", () => {
-  localStorage.clear();
-  location.reload();
+  if (confirm('Are you sure you want to reset the game?')) {
+    localStorage.clear();
+    location.reload();
+  }
 });
 
 document.querySelector('ul li:last-child button')?.addEventListener("click", () => {
-  localStorage.setItem("money", 100000);
-  location.reload();
-}); 
+  if (prompt('Enter developer password:')?.toLowerCase() === 'mesn') {
+    localStorage.setItem("money", 100000);
+    location.reload();
+  }
+});
